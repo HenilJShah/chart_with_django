@@ -1,0 +1,229 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<title>Hello, world!</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+<style>
+    h1 {
+        font-family: 'Oswald', sans-serif;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="container">
+            <form method="POST" action="{% url 'datapart' %}">
+                {% csrf_token %}
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata1" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata2" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata3" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata4" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata5" class="form-control" type="number">
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata6" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata7" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>
+                                                <h2>enter data here</h2>
+                                            </label>
+                                            <input name="inputdata8" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="buttion" class="btn btn-primary" data-toggle="modal"
+                    data-target="#staticBackdrop">submit</button> -->
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal"
+                    data-target="#staticBackdrop">enter data</button>
+                <!-- <button type="submit" class="btn btn-primary btn-lg btn-block">submit</button> -->
+            </form>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col my-3">
+                <canvas id="Doughnut_and_Pie" width="500px" height="300px"></canvas>
+            </div>
+            <div class="col my-3">
+                <canvas id="pie" width="500px" height="300px"></canvas>
+            </div>
+
+            <div class="w-100">
+
+            </div>
+
+            <div class="col">
+                <canvas id="radar" width="500px" height="300px"></canvas>
+            </div>
+            <div class="col">
+                <canvas id="Doughnut_and_Pie" width="500px" height="300px"></canvas>
+            </div>
+
+            <div class="w-100">
+                <hr>
+            </div>
+
+            <div class="col">
+                <canvas id="pie" width="500px" height="300px"></canvas>
+            </div>
+
+            <div class="col">
+                <canvas id="Polar_Area" width="500px" height="300px"></canvas>
+            </div>
+
+            <!-- <canvas id="Bubble_Chart"></canvas>
+            <canvas id="Scatter_Chart"></canvas>
+            <canvas id="Area_Charts"></canvas> -->
+        </div>
+    </div>
+
+    <script src="{% static 'js/chart.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+        // bar
+
+        var ctx = document.getElementById('Doughnut_and_Pie').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['data1', 'data1', 'data1', 'data1', 'data1', 'data1', 'data1', 'data1'],
+                datasets: [{
+                    label: 'data',
+                    data: {{ ls| safe}},
+            backgroundColor: ['#1d55e2', '#1d55e2', '#1d55e2', '#ffe047', '#fe047', '#ffe047', '#1d55e2','#ffe047',],
+            borderWidth: 5,
+        },
+        ]
+    },
+});
+    </script>
+
+    <script>
+        // Pie
+
+var ctx = document.getElementById('pie').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: 'colours',
+            data: [12, 25, 3, 5, 2, 3],
+            backgroundColor: ['#ffe047', '#ffe047', '#ffe047', '#ffe047', '#ffe047', '#ffe047',],
+            borderWidth: 5,
+        },
+        {
+            data: [12, 21, 30, 51, 12, 73],
+            backgroundColor: ['#2080b3', '#2080b3', '#2080b3', '#2080b3', '#2080b3', '#2080b3', ],
+            borderWidth: 5,
+        }
+        ]
+    },
+});
+
+    </script>
+    
+    
+   
+    <!-- <script src="{% static 'js/custom.js' %}"></script> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
